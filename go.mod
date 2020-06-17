@@ -7,6 +7,7 @@ require (
 	github.com/appscode/go v0.0.0-20191025021232-311ac347b3ef
 	github.com/fatih/structs v1.1.0
 	github.com/gobuffalo/flect v0.1.5
+	github.com/gogo/protobuf v1.3.1 // indirect
 	github.com/json-iterator/go v1.1.7
 	github.com/onsi/ginkgo v1.8.0
 	github.com/onsi/gomega v1.5.0
@@ -21,7 +22,7 @@ require (
 	k8s.io/klog v0.3.1
 	kmodules.xyz/client-go v0.0.0-20191106181350-088754189f4e
 	kmodules.xyz/constants v0.0.0-20191024095500-cd4313df4aa6
-	kubeform.dev/kubeform v0.1.0
+	kubeform.dev/kubeform v0.0.0-00010101000000-000000000000
 )
 
 replace (
@@ -40,5 +41,6 @@ replace (
 	k8s.io/kube-openapi => k8s.io/kube-openapi v0.0.0-20190228160746-b3a7cee44a30
 	k8s.io/metrics => k8s.io/metrics v0.0.0-20190314001731-1bd6a4002213
 	k8s.io/utils => k8s.io/utils v0.0.0-20190514214443-0a167cbac756
+	kubeform.dev/kubeform => github.com/ibelikov/kubeform v0.1.1-0.20200618062807-c76c1506a63c
 	sigs.k8s.io/structured-merge-diff => sigs.k8s.io/structured-merge-diff v0.0.0-20190302045857-e85c7b244fd2
 )

@@ -277,6 +277,11 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"k8s.io/apimachinery/pkg/runtime.TypeMeta":                               schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref),
 		"k8s.io/apimachinery/pkg/runtime.Unknown":                                schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
 		"k8s.io/apimachinery/pkg/util/intstr.IntOrString":                        schema_apimachinery_pkg_util_intstr_IntOrString(ref),
+		"kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppService":            schema_kubeform_apis_modules_v1alpha1_AzureAppService(ref),
+		"kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceList":        schema_kubeform_apis_modules_v1alpha1_AzureAppServiceList(ref),
+		"kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceOutput":      schema_kubeform_apis_modules_v1alpha1_AzureAppServiceOutput(ref),
+		"kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceSpec":        schema_kubeform_apis_modules_v1alpha1_AzureAppServiceSpec(ref),
+		"kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceStatus":      schema_kubeform_apis_modules_v1alpha1_AzureAppServiceStatus(ref),
 		"kubeform.dev/kubeform/apis/modules/v1alpha1.GoogleServiceAccount":       schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccount(ref),
 		"kubeform.dev/kubeform/apis/modules/v1alpha1.GoogleServiceAccountList":   schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountList(ref),
 		"kubeform.dev/kubeform/apis/modules/v1alpha1.GoogleServiceAccountOutput": schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountOutput(ref),
@@ -12230,6 +12235,253 @@ func schema_apimachinery_pkg_util_intstr_IntOrString(ref common.ReferenceCallbac
 	}
 }
 
+func schema_kubeform_apis_modules_v1alpha1_AzureAppService(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta", "kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceSpec", "kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceStatus"},
+	}
+}
+
+func schema_kubeform_apis_modules_v1alpha1_AzureAppServiceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "AzureAppServiceList is a list of AzureAppServices",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of AzureAppService CRD objects",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Ref: ref("kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppService"),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta", "kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppService"},
+	}
+}
+
+func schema_kubeform_apis_modules_v1alpha1_AzureAppServiceOutput(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"possibleOutboundIPAddresses": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_kubeform_apis_modules_v1alpha1_AzureAppServiceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"secretRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"providerRef": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("k8s.io/api/core/v1.LocalObjectReference"),
+						},
+					},
+					"source": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"alwaysOn": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Whether the App Service should always be on (Basic or above required).",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"appServicePlanName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name of app service plan.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"appSettings": {
+						SchemaProps: spec.SchemaProps{
+							Description: "App Service's configuration values.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"httpsOnly": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Whether the App Service only allows HTTPS connections.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name of app service.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"rgLocation": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource Group location.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"rgName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource Group name.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"size": {
+						SchemaProps: spec.SchemaProps{
+							Description: "App Service Plan size.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"tier": {
+						SchemaProps: spec.SchemaProps{
+							Description: "App Service Plan tier.",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+					"use32BitWorkerProcess": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Whether the App Service should use the 32-bit worker process (needed for free plans, will be overwritten if Free tier selected).",
+							Type:        []string{"string"},
+							Format:      "byte",
+						},
+					},
+				},
+				Required: []string{"providerRef"},
+			},
+		},
+		Dependencies: []string{
+			"k8s.io/api/core/v1.LocalObjectReference"},
+	}
+}
+
+func schema_kubeform_apis_modules_v1alpha1_AzureAppServiceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"output": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceOutput"),
+						},
+					},
+					"state": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"phase": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kubeform.dev/kubeform/apis/modules/v1alpha1.AzureAppServiceOutput"},
+	}
+}
+
 func schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccount(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -12335,14 +12587,14 @@ func schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountOutput(ref common
 					},
 					"emails": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Service account emails.",
+							Description: "Service account emails by name.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
 					"emailsList": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Service account emails.",
+							Description: "Service account emails as list.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -12356,14 +12608,14 @@ func schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountOutput(ref common
 					},
 					"iamEmails": {
 						SchemaProps: spec.SchemaProps{
-							Description: "IAM-format service account emails.",
+							Description: "IAM-format service account emails by name.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
 					"iamEmailsList": {
 						SchemaProps: spec.SchemaProps{
-							Description: "IAM-format service account emails.",
+							Description: "IAM-format service account emails as list.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -12391,7 +12643,14 @@ func schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountOutput(ref common
 					},
 					"serviceAccounts": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Service account resources.",
+							Description: "Service account resources as list.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"serviceAccountsMap": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Service account resources by name.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -12427,6 +12686,20 @@ func schema_kubeform_apis_modules_v1alpha1_GoogleServiceAccountSpec(ref common.R
 					"billingAccountID": {
 						SchemaProps: spec.SchemaProps{
 							Description: "If assigning billing role, specificy a billing account (default is to assign at the organizational level).",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"description": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Descriptions of the created service accounts (defaults to no description)",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"displayName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Display names of the created service accounts (defaults to 'Terraform-managed service account')",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -12644,6 +12917,20 @@ func schema_kubeform_apis_modules_v1alpha1_RDSOutput(ref common.ReferenceCallbac
 			SchemaProps: spec.SchemaProps{
 				Type: []string{"object"},
 				Properties: map[string]spec.Schema{
+					"enhancedMonitoringIamRoleArn": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The Amazon Resource Name (ARN) specifying the monitoring role",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"enhancedMonitoringIamRoleName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The name of the monitoring role",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"thisDbInstanceAddress": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The address of the RDS instance",
@@ -12661,6 +12948,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSOutput(ref common.ReferenceCallbac
 					"thisDbInstanceAvailabilityZone": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The availability zone of the RDS instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"thisDbInstanceCaCertIdentifier": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the identifier of the CA certificate for the DB instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -12847,6 +13141,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 							Format:      "",
 						},
 					},
+					"caCertIdentifier": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the identifier of the CA certificate for the DB instance",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
 					"characterSetName": {
 						SchemaProps: spec.SchemaProps{
 							Description: "(Optional) The character set name to use for DB encoding in Oracle instances. This can't be changed. See Oracle Character Sets Supported in Amazon RDS for more information",
@@ -12870,7 +13171,7 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 					},
 					"createDbOptionGroup": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Whether to create a database option group",
+							Description: "(Optional) Create a database option group",
 							Type:        []string{"boolean"},
 							Format:      "",
 						},
@@ -12900,6 +13201,13 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 						SchemaProps: spec.SchemaProps{
 							Description: "Name of DB subnet group. DB instance will be created in the VPC associated with the DB subnet group. If unspecified, will be created in the default VPC",
 							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"deleteAutomatedBackups": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies whether to remove automated backups immediately after the DB instance is deleted",
+							Type:        []string{"boolean"},
 							Format:      "",
 						},
 					},
@@ -13059,9 +13367,24 @@ func schema_kubeform_apis_modules_v1alpha1_RDSSpec(ref common.ReferenceCallback)
 					},
 					"optionGroupName": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Name of the DB option group to associate. Setting this automatically disables option_group creation",
+							Description: "Name of the DB option group to associate",
 							Type:        []string{"string"},
 							Format:      "",
+						},
+					},
+					"optionGroupTimeouts": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Define maximum timeout for deletion of `aws_db_option_group` resource",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Type:   []string{"string"},
+										Format: "",
+									},
+								},
+							},
 						},
 					},
 					"options": {
